@@ -2,7 +2,6 @@ package services
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 
 	"github.com/redhaanggara21/go-grpc-product-svc/pkg/db"
@@ -23,7 +22,7 @@ func (s *Server) CreateProduct(ctx context.Context, req *pb.CreateProductRequest
 	product.Price = req.Price
 
 	// result := s.H.DB.Create(&product)
-	fmt.Println(req)
+	// fmt.Println(req)
 
 	if result := s.H.DB.Create(&product); result.Error != nil {
 		return &pb.CreateProductResponse{
@@ -32,7 +31,8 @@ func (s *Server) CreateProduct(ctx context.Context, req *pb.CreateProductRequest
 		}, nil
 	}
 
-	fmt.Println(&product)
+	// result := s.H.DB.Create(&product)
+	// fmt.Print(product)
 
 	return &pb.CreateProductResponse{
 		Status: http.StatusCreated,
